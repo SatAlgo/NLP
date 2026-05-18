@@ -1,0 +1,44 @@
+1
+Practical 1 — Text preprocessing & linguistic basics
+NLTK · string
+WHAT YOU'LL DO
+Clean raw text and break it into pieces a computer can work with. We do six things in order: lowercase the text, strip punctuation, tokenize into sentences and words, drop stop-words, stem (chop word endings), lemmatize (reduce to dictionary form), then count word frequencies.
+STEPS
+
+Lowercase with str.lower() so 'Hello' and 'hello' aren't treated as different words.
+Remove punctuation with str.maketrans('', '', string.punctuation).
+Tokenize with nltk.tokenize.sent_tokenize and word_tokenize (needs nltk.download('punkt_tab')).
+Filter stop-words using nltk.corpus.stopwords.words('english').
+Stem with PorterStemmer (fast, gives non-dictionary roots like 'studi').
+Lemmatize with WordNetLemmatizer (slower, gives real words like 'study'). Pass pos='v' for verbs.
+Count with collections.Counter.
+TECH BEHIND IT
+NLTK = Natural Language Toolkit, the classic Python NLP library.
+REAL-LIFE USES
+Search engines, chatbots, spam filters, auto-complete — every text application starts with these cleaning steps.
+LIKELY VIVA QUESTIONS
+
+Q1
+What is tokenization?
+Splitting text into smaller units called tokens (words, sentences or subwords). It is the first step in almost every NLP task.
+Q2
+Difference between stemming and lemmatization?
+Stemming chops off word endings using rules — fast but the result may not be a real word (studies → studi). Lemmatization uses a dictionary (WordNet) — slower but always returns a real word (studies → study).
+Q3
+Why do we remove stop-words?
+Words like 'the, is, a, in' appear in almost every sentence and rarely help understand meaning. Removing them lets the model focus on informative words and reduces feature size.
+Q4
+What is a corpus?
+A large, organised collection of text used as the input to an NLP system (e.g. movie-review corpus, news corpus).
+Q5
+What is morphology?
+The study of word structure — how words are built from roots, prefixes and suffixes (e.g. un-happi-ness).
+Q6
+Why lowercase?
+So that the same word in different cases is treated identically. Otherwise 'Apple' and 'apple' become two separate features.
+Q7
+Which is better, stemming or lemmatization?
+Lemmatization is more accurate but slower. Stemming is faster and good for search-engine-like tasks where exact form doesn't matter.
+Q8
+What is the role of punkt in NLTK?
+punkt is a pre-trained sentence-tokenizer model — it knows how to split text into sentences using learned punctuation patterns.
